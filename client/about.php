@@ -1,4 +1,6 @@
-<?php include "layouts/header.php";?>
+<?php include ("layouts/header.php");
+include ("../client/connect/item.php");
+?>
 
 	<header id="head" class="secondary"></header>
 	<!-- container -->
@@ -8,7 +10,7 @@
 					<h1 class="page-title">Về chúng tôi</h1>
 				</header>
 				<h3>Giới thiệu</h3>
-				<p><img src="../assets/images/about.jpg" alt="" class="img-rounded pull-right" width="300" > </p>
+				<p><img src="../assets/images/anhkho.jpg" alt="" class="img-rounded pull-right" width="400" height="300" > </p>
 				<p>Lock3p - Không gian thiên đường của bạn</p>
 				<p>Tại Lock3p, chúng tôi không chỉ là một đơn vị cung cấp dịch vụ cho thuê phòng kho cá nhân mà còn là đối tác đồng hành trong việc bảo vệ và quản lý tài sản cá nhân của bạn. Chúng tôi hiểu rằng mỗi vật dụng, mỗi kỷ niệm trong cuộc sống của bạn đều có giá trị và ý nghĩa riêng biệt. Vì vậy, chúng tôi đã xây dựng Lock3p với tầm nhìn và sứ mệnh tạo ra một không gian an toàn và tiện nghi để bạn có thể yên tâm giao phó những khoảnh khắc quan trọng nhất của mình cho chúng tôi.</p>
 				<h3>Tầm nhìn</h3>
@@ -21,7 +23,8 @@
 					<h1 class="page-title">Đội ngũ quản lý</h1>
 				</header>
 				<h3>Giám đốc</h3>
-				<p>Giám đốc Lock3plà một người lãnh đạo tận tâm, có kiến thức sâu rộng về ngành và tâm huyết với sứ mệnh của chúng tôi. Bà đã có nhiều năm kinh nghiệm trong lĩnh vực quản lý và luôn nỗ lực để đảm bảo rằng Lock3p không chỉ là nơi lưu trữ mà còn là một điểm đến an toàn và đáng tin cậy cho khách hàng.</p>
+				<!-- <p><img src="../assets/images/1.jpg" alt="" class="img-rounded pull-right" width="300" height="250" > </p> -->
+				<p>Giám đốc Lock3p là một người lãnh đạo tận tâm, có kiến thức sâu rộng về ngành và tâm huyết với sứ mệnh của chúng tôi. Bà đã có nhiều năm kinh nghiệm trong lĩnh vực quản lý và luôn nỗ lực để đảm bảo rằng Lock3p không chỉ là nơi lưu trữ mà còn là một điểm đến an toàn và đáng tin cậy cho khách hàng.</p>
 				<p>Với kiến thức sâu rộng về ngành và tầm nhìn chiến lược, bà đang định hình không chỉ tương lai của Lock3p mà còn của cộng đồng chúng ta. Sự sáng tạo, cam kết và tận tâm của ông là động lực lớn giúp chúng tôi không ngừng phát triển và mang đến trải nghiệm tốt nhất cho khách hàng.</p>
 				<p>Mỗi cá nhân mang đến động lực và năng lượng tích cực, đồng hành cùng chúng tôi trong việc đạt được mục tiêu và mang đến trải nghiệm đặc biệt cho khách hàng.</p>
 				<h3>Nhân sự</h3>

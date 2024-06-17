@@ -81,6 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<li><i class="fa fa-phone"></i> 1-123-345-6789</li>
 				<li><a href="#"><i class="fa fa-envelope-o"></i> lock3p@locker.com</a></li>
 				<li><i class="fa fa-flag"></i> 102 Bát Khối, Quận Long Biên, Tp Hà Nội</i></li>
+				<li><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0280585710457!2d105.92313797504407!3d21.031563280618496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a9a72986b885%3A0x928dd277889a0293!2zSOG7hyB0aOG7kW5nIGtobyB4xrDhu59uZyBDdHkgVE5EIGNobyB0aHXDqg!5e0!3m2!1svi!2s!4v1706192567883!5m2!1svi!2s" width="400" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></li>
 			</ul>
 		</div>
 
@@ -89,6 +90,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </div>
 </div> <!-- /container -->
+<br>
+
 
 
 

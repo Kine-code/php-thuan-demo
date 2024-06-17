@@ -1,6 +1,6 @@
 <?php
 
-include 'components/connect.php';
+include 'connect/connect.php';
 
 if(isset($_COOKIE['user_id'])){
    $user_id = $_COOKIE['user_id'];
@@ -8,8 +8,7 @@ if(isset($_COOKIE['user_id'])){
    setcookie('user_id', create_unique_id(), time() + 60*60*24*30);
 }
 
-if(isset($_POST['place_order'])){
-
+if (isset($_POST['place_order'])) {
    $name = $_POST['name'];
    $name = filter_var($name, FILTER_SANITIZE_STRING);
    $number = $_POST['number'];
@@ -30,17 +29,17 @@ if(isset($_POST['place_order'])){
 
       $get_product = $conn->prepare("SELECT * FROM `products` WHERE id = ? LIMIT 1");
       $get_product->execute([$_GET['get_id']]);
-      if($get_product->rowCount() > 0){
+      if($get_product->num_rows > 0){
          while($fetch_p = $get_product->fetch(PDO::FETCH_ASSOC)){
             $insert_order = $conn->prepare("INSERT INTO `orders`(id, user_id, name, number, email, address, address_type, method, product_id, price, qty) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
             $insert_order->execute([create_unique_id(), $user_id, $name, $number, $email, $address, $address_type, $method, $fetch_p['id'], $fetch_p['price'], 1]);
             header('location:orders.php');
          }
       }else{
-         $warning_msg[] = 'Something went wrong!';
+         $warning_msg[] = 'Đã xảy ra lỗi!';
       }
 
-   }elseif($verify_cart->rowCount() > 0){
+   }elseif($verify_cart->num_rows > 0){
 
       while($f_cart = $verify_cart->fetch(PDO::FETCH_ASSOC)){
 
@@ -56,60 +55,44 @@ if(isset($_POST['place_order'])){
       }
 
    }else{
-      $warning_msg[] = 'Your cart is empty!';
+      $warning_msg[] = 'Giỏ của bạn trống!';
    }
 
 }
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Checkout</title>
-
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-
-   <link rel="stylesheet" href="css/style.css">
-
-</head>
-<body>
-   
-<?php include 'components/header.php'; ?>
+<?php include 'layouts/header.php'; ?>
+<header id="head" class="secondary"></header>
 
 <section class="checkout">
 
-   <h1 class="heading">checkout summary</h1>
+   <h1 class="heading">Thanh toán</h1>
 
    <div class="row">
 
       <form action="" method="POST">
-         <h3>billing details</h3>
+         <h3>Chi tiết thanh toán</h3>
          <div class="flex">
             <div class="box">
-               <p>your name <span>*</span></p>
-               <input type="text" name="name" required maxlength="50" placeholder="enter your name" class="input">
-               <p>your number <span>*</span></p>
+               <p>Họ và tên<span>*</span></p>
+               <input type="text" name="name" required maxlength="50" value="<?= isset($user['name']) ? $user['name'] : ''; ?>" placeholder="enter your name" class="input">
+               <p>Số điện thoại<span>*</span></p>
                <input type="number" name="number" required maxlength="10" placeholder="enter your number" class="input" min="0" max="9999999999">
-               <p>your email <span>*</span></p>
-               <input type="email" name="email" required maxlength="50" placeholder="enter your email" class="input">
-               <p>payment method <span>*</span></p>
+               <p>Email <span>*</span></p>
+               <input type="email" name="email" required maxlength="50"value="<?= isset($user['email']) ? $user['email'] : ''; ?>" placeholder="enter your email" class="input">
+               <p>Phương thức thanh toán <span>*</span></p>
                <select name="method" class="input" required>
-                  <option value="cash on delivery">cash on delivery</option>
-                  <option value="credit or debit card">credit or debit card</option>
-                  <option value="net banking">net banking</option>
-                  <option value="UPI or wallets">UPI or RuPay</option>
+                  <option value="cash on delivery">Thanh toán tại cửa hàng</option>
+                  <option value="credit or debit card">Thanh toán trực tuyến</option>
                </select>
-               <p>address type <span>*</span></p>
+               <p>Địa chỉ<span>*</span></p>
                <select name="address_type" class="input" required> 
-                  <option value="home">home</option>
-                  <option value="office">office</option>
+                  <option value="home">Nhà</option>
+                  <option value="office">Công ty</option>
                </select>
             </div>
-            <div class="box">
+            <!-- <div class="box">
                <p>address line 01 <span>*</span></p>
                <input type="text" name="flat" required maxlength="50" placeholder="e.g. flat & building number" class="input">
                <p>address line 02 <span>*</span></p>
@@ -120,13 +103,13 @@ if(isset($_POST['place_order'])){
                <input type="text" name="country" required maxlength="50" placeholder="enter your country name" class="input">
                <p>pin code <span>*</span></p>
                <input type="number" name="pin_code" required maxlength="6" placeholder="e.g. 123456" class="input" min="0" max="999999">
-            </div>
+            </div> -->
          </div>
-         <input type="submit" value="place order" name="place_order" class="btn">
+         <input type="submit" value="Thanh toán" name="place_order" class="btn">
       </form>
 
       <div class="summary">
-         <h3 class="title">cart items</h3>
+         <h3 class="title">Chi tiết</h3>
          <?php
             $grand_total = 0;
             if(isset($_GET['get_id'])){
@@ -146,7 +129,7 @@ if(isset($_POST['place_order'])){
             }else{
                $select_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
                $select_cart->execute([$user_id]);
-               if($select_cart->rowCount() > 0){
+               if($select_cart->num_rows > 0){
                   while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
                      $select_products = $conn->prepare("SELECT * FROM `products` WHERE id = ?");
                      $select_products->execute([$fetch_cart['product_id']]);
@@ -156,6 +139,7 @@ if(isset($_POST['place_order'])){
                      $grand_total += $sub_total;
             
          ?>
+         
          <div class="flex">
             <img src="uploaded_files/<?= $fetch_product['image']; ?>" class="image" alt="">
             <div>
@@ -166,11 +150,11 @@ if(isset($_POST['place_order'])){
          <?php
                   }
                }else{
-                  echo '<p class="empty">your cart is empty</p>';
+                  echo '<p class="empty">Giỏ của bạn trống</p>';
                }
             }
          ?>
-         <div class="grand-total"><span>grand total :</span><p><i class="fas fa-indian-rupee-sign"></i> <?= $grand_total; ?></p></div>
+         <div class="grand-total"><span>Tổng tiền :</span><p><i class="fas fa-indian-rupee-sign"></i> <?= $grand_total; ?></p></div>
       </div>
 
    </div>
@@ -185,7 +169,6 @@ if(isset($_POST['place_order'])){
 
 <script src="js/script.js"></script>
 
-<?php include 'components/alert.php'; ?>
+<?php include 'connect/alert.php'; ?>
 
-</body>
-</html>
+<?php include "layouts/footer.php"; ?>

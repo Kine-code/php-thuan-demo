@@ -25,7 +25,7 @@
                   <img class="img-circle" src="../assets/images/1.jpg" style="width: 100px;height:100px;">
                 </div>
                 <div class="col-sm-9">
-                  <p>Công ty cho thuê rất uy tín, an ninh tốt nên không phải lo sợ mất đồ!</p>
+                  <p>Công ty LOCK3P là một công ty tôi luôn chọn mỗi khi cần thuê kho hàng mini để chứa đồ, an ninh 24/24 rất an toàn, kho sạch đẹp không bị ẩm !</p>
                   <small>Duong Cong Kien</small>
 
                 </div>

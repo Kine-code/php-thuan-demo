@@ -1,6 +1,14 @@
 <?php
 include 'connect/connect.php';
-
+$total_cart_items = isset($_SESSION['cart_count']) ? $_SESSION['cart_count'] : getCartItemCount();
+if (!isset($_SESSION['cart_count'])) {
+	$_SESSION['cart_count'] = getCartItemCount();
+ }
+ 
+ $total_cart_items = $_SESSION['cart_count'];
+ function getCartItemCount() {
+    return isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+}
 if (isset($_COOKIE['user_id'])) {
    $user_id = $_COOKIE['user_id'];
 } else {
@@ -50,7 +58,7 @@ if (isset($_POST['add_to_cart'])) {
    } catch (Exception $e) {
       echo "Error: " . $e->getMessage();
    }
-   header("Location: view_products.php");
+   header("Location: view_products1.php");
    exit();
 }
 ?>

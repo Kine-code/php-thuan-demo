@@ -1,5 +1,14 @@
 <?php
 include 'connect/connect.php';
+$total_cart_items = isset($_SESSION['cart_count']) ? $_SESSION['cart_count'] : getCartItemCount();
+if (!isset($_SESSION['cart_count'])) {
+	$_SESSION['cart_count'] = getCartItemCount();
+ }
+ 
+ $total_cart_items = $_SESSION['cart_count'];
+ function getCartItemCount() {
+    return isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+}
 
 if (isset($_COOKIE['user_id'])) {
    $user_id = $_COOKIE['user_id'];
@@ -42,7 +51,7 @@ if (isset($_POST['add_to_cart'])) {
          $insert_cart = $conn->prepare("INSERT INTO `cart`(id, user_id, product_id, price, qty) VALUES(?,?,?,?,?)");
          $insert_cart->bind_param("sssss", $id, $user_id, $product_id, $fetch_prodcut['price'], $qty);
          $insert_cart->execute();
-
+         $_SESSION['cart_count'] = getCartItemCount();
          $success_msg[] = 'Đã thêm vào giỏ hàng!';
       } else {
          $warning_msg[] = 'Sản phẩm không có!';
@@ -108,7 +117,6 @@ if (isset($_POST['add_to_cart'])) {
          $select_products = $conn->prepare("SELECT * FROM `products`");
          $select_products->execute();
          $result = $select_products->get_result(); // Get the result set
-
          while ($fetch_prodcut = $result->fetch_assoc()) {
       ?>
             <form action="" method="POST" class="box" enctype="multipart/form-data">

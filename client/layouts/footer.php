@@ -14,7 +14,7 @@
 						<div class="panel-body">
 							<p>Lock3p - Không gian tận hưởng cá nhân của bạn</p>
 							<ul>
-								<li><i class="fa fa-phone"></i>0355 303266</li>
+								<li><i class="fa fa-phone"></i> 0376679803</li>
 								<li><a href="#"><i class="fa fa-envelope-o"></i> lock3p@gmail.com</a></li>
 							</ul>
 						</div>
@@ -26,9 +26,9 @@
 						<p class="follow-me-icons">
 							<a href=""><i class="fa fa-twitter fa-2"></i></a>
 							<a href=""><i class="fa fa-dribbble fa-2"></i></a>
-							<a href=""><i class="fa fa-github fa-2"></i></a>
-							<a href=""><i class="fa fa-facebook fa-2"></i></a>
-							<a href=""><i class="fa fa-youtube fa-2"></i></a>
+							<a href="https://github.com/Kine-code/php-thuan-demo"><i class="fa fa-github fa-2"></i></a>
+							<a href="https://www.facebook.com/"><i class="fa fa-facebook fa-2"></i></a>
+							<a href="https://www.youtube.com/channel/UCp8frkSn58CaooT_lkOOnAA"><i class="fa fa-youtube fa-2"></i></a>
 							<a href=""><i class="fa fa-pinterest fa-2"></i></a>
 						</p>
 					</div>
@@ -46,7 +46,7 @@
 						<p class="simplenav">
 							<a href="home.php">Trang chủ</a> |
 							<a href="about.php">Về chúng tôi</a> |
-							<a href="services.php">Thuê kho hàng</a> |
+							<a href="view_products.php">Thuê kho hàng</a> |
 							<a href="contact.php">Liên hệ</a>
 						</p>
 					</div>

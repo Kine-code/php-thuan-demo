@@ -2,6 +2,7 @@
 include("layouts/header.php");
 include("layouts/banner.php");
 ?>
+
 <!-- Intro -->
 <div class="container text-center">
   <br>
@@ -13,12 +14,15 @@ include("layouts/banner.php");
 </div>
 <!-- /Intro-->
 <!-- btn-->
-<div class="container top-space text-center">
+
+<div class="container  text-center">
   <p><a href="view_products.php" class="btn btn-primary btn-large" style="width:25%; display: inline-block;">Đặt dịch vụ ngay</a></p>
 </div>
 <!-- /btn-->
 <!-- Highlights - jumbotron -->
+<?php include'../client/layouts/portfolio.php'?>
 <div class="container">
+  
   <div class="heading text-center">
     <!-- Heading -->
     <h2>Công ty LOCK3P</h2>
@@ -32,33 +36,44 @@ include("layouts/banner.php");
     <p>Chúng tôi đánh giá mỗi khoảnh khắc quý báu của bạn và cam kết tạo ra không gian không chỉ là nơi lưu trữ
       mà còn là tổ chức cộng đồng chia sẻ, làm cho Lock3p trở thành một điểm đến đặc biệt, nơi mọi người gặp
       gỡ, kết nối và tạo ra những kỷ niệm đáng nhớ.</p>
-      <img src="../assets/images/anhtrangchu.jpg" alt="">
+    <img src="../assets/images/ha.jpg" alt="Kho Xưởng Long Biên" style="margin-left: 250px ;" height="400"> <br> <br>
+    <p>Chúng tôi tự hào với hệ thống kho lưu trữ hiện đại và đa dạng của mình, được trang bị đầy đủ tiện nghi và công nghệ an ninh hàng đầu. LOCK3P không chỉ cung cấp không gian an toàn để lưu trữ tài sản cá nhân của bạn mà còn tạo ra môi trường thân thiện và chia sẻ. Với chúng tôi, không chỉ là việc cung cấp dịch vụ, mà còn là việc xây dựng cộng đồng đồng lòng và gắn kết.</p>
+    <p>Khách hàng của chúng tôi không chỉ là người sử dụng dịch vụ mà là thành viên quan trọng của gia đình LOCK3P. Đội ngũ nhân viên chúng tôi luôn sẵn sàng hỗ trợ và tư vấn, đảm bảo rằng mỗi người đều cảm thấy chăm sóc và quan trọng. Chúng tôi không chỉ là đơn vị cung cấp phòng kho, mà còn là người bạn đồng hành, đồng sức trong mọi hành trình của bạn.</p>
+    <p>Ở LOCK3P, chúng tôi không ngừng đổi mới để đáp ứng những thách thức ngày càng phức tạp của cuộc sống hiện đại. Từ việc áp dụng công nghệ tiên tiến trong quản lý kho đến việc tạo ra các dịch vụ gia tăng như bảo hiểm và vận chuyển, chúng tôi cam kết mang lại trải nghiệm toàn diện và thuận tiện nhất cho khách hàng.</p>
+    <img src="../assets/images/anhtrangchu.jpg" alt="Kho Xưởng Long Biên" style="margin-left: 250px ;" height="400"> <br> <br>
+    <p>Hơn nữa, chúng tôi không chỉ coi trọng việc kinh doanh mà còn đặt mình vào vị thế của một công dân xã hội. LOCK3P thường xuyên tham gia vào các hoạt động từ thiện và xã hội, đồng lòng hỗ trợ cộng đồng và góp phần vào sự phát triển bền vững. Chúng tôi tin rằng chỉ khi chia sẻ, kết nối và chăm sóc, một cộng đồng mới thực sự mạnh mẽ và phồn thịnh.</p>
+
+    <p>Từ việc cung cấp không gian an toàn cho tài sản cá nhân đến việc xây dựng cộng đồng đoàn kết, LOCK3P không chỉ là một công ty cho thuê kho xưởng, mà là một đối tác đáng tin cậy, một người bạn đồng hành trong mọi chặng đường của cuộc sống.</p>
+    <p>Công Ty LOCK3P tự hào là một trong những đơn vị Logistic uy tín hàng đầu trong lĩnh vực cho thuê kho. Với
+      vị trí tại Trung tâm thủ đô Hà Nội, cụm kho nằm tại trung tâm Thủ đô giúp ohujcc vụ ọi mục đích nhu cầu
+      của bạn tiện lợi hơn bao giờ hết!</p>
   </div>
+  
   <div class="row iconColor">
-			<div class="col-md-4 col-sm-4">
-				<h3><i class="fa fa-desktop color"></i>&nbsp; Chúng tôi đã làm những gì?</h3>
-				<!-- Paragraph -->
-				<p>Chúng tôi đặt tầm nhìn cao hơn, xây dựng một cộng đồng chia sẻ và tận hưởng trải nghiệm bảo quản tài sản cá nhân. Lock3p không chỉ là nơi để bạn lưu trữ, mà còn là không gian để bạn kể chuyện, chia sẻ và tạo ra những kỷ niệm mới.</p>
-			</div>
-			<div class="col-md-4 col-sm-4">
-				<!-- Heading -->
-				<h3><i class="fa fa-cloud color"></i>&nbsp;Tại sao nên chọn LOCK3P? </h3>
-				<!-- Paragraph -->
-				<p>Sứ mệnh của chúng tôi không chỉ dừng lại ở việc mang lại chất lượng dịch vụ tốt nhất, mà còn tập trung vào sự tận tâm và chia sẻ. Chúng tôi tin rằng mỗi thành viên trong cộng đồng Lock3p đều có câu chuyện độc đáo và chúng tôi muốn tạo ra một môi trường nơi mọi người có thể kết nối, giúp đỡ lẫn nhau và chia sẻ niềm đam mê về việc bảo quản và giữ gìn những giá trị cá nhân</p>
-			</div>
-			<div class="col-md-4 col-sm-4">
-				<!-- Heading -->
-				<h3><i class="fa fa-home color"></i>&nbsp;Chúng tôi ở đâu?</h3>
-				<!-- Paragraph -->
-				<p>Địa chỉ và Giờ làm việc <br>
-					LOCK3P<br>
-					102 Bát Khối, Quận Long Biên
-					Tp Hà Nội<br>
-					Zip Code: 151831<br>
-					T2-T6: 9am-5pm<br>
-					T7: 8am-12pm / CN: đóng cửa </p>
-			</div>
-		</div>
+    <div class="col-md-4 col-sm-4">
+      <h3><i class="fa fa-desktop color"></i>&nbsp; Chúng tôi đã làm những gì?</h3>
+      <!-- Paragraph -->
+      <p>Chúng tôi đặt tầm nhìn cao hơn, xây dựng một cộng đồng chia sẻ và tận hưởng trải nghiệm bảo quản tài sản cá nhân. Lock3p không chỉ là nơi để bạn lưu trữ, mà còn là không gian để bạn kể chuyện, chia sẻ và tạo ra những kỷ niệm mới.</p>
+    </div>
+    <div class="col-md-4 col-sm-4">
+      <!-- Heading -->
+      <h3><i class="fa fa-cloud color"></i>&nbsp;Tại sao nên chọn LOCK3P? </h3>
+      <!-- Paragraph -->
+      <p>Sứ mệnh của chúng tôi không chỉ dừng lại ở việc mang lại chất lượng dịch vụ tốt nhất, mà còn tập trung vào sự tận tâm và chia sẻ. Chúng tôi tin rằng mỗi thành viên trong cộng đồng Lock3p đều có câu chuyện độc đáo và chúng tôi muốn tạo ra một môi trường nơi mọi người có thể kết nối, giúp đỡ lẫn nhau và chia sẻ niềm đam mê về việc bảo quản và giữ gìn những giá trị cá nhân</p>
+    </div>
+    <div class="col-md-4 col-sm-4">
+      <!-- Heading -->
+      <h3><i class="fa fa-home color"></i>&nbsp;Chúng tôi ở đâu?</h3>
+      <!-- Paragraph -->
+      <p>Địa chỉ và Giờ làm việc <br>
+        LOCK3P<br>
+        102 Bát Khối, Quận Long Biên
+        Tp Hà Nội<br>
+        Zip Code: 151831<br>
+        T2-T6: 9am-5pm<br>
+        T7: 8am-12pm / CN: đóng cửa </p>
+    </div>
+  </div>
 </div>
 <div class="jumbotron top-space">
   <div class="container">
@@ -100,16 +115,15 @@ include("layouts/banner.php");
     </div> <!-- /row  -->
   </div>
 </div>
+
 <!-- /Highlights -->
 <!-- container -->
-<div class="container">
+<!-- <div class="container">
   <div class="jumbotron top-space">
-    <p>Công Ty LOCK3P tự hào là một trong những đơn vị Logistic uy tín hàng đầu trong lĩnh vực cho thuê kho. Với
-      vị trí tại Trung tâm thủ đô Hà Nội, cụm kho nằm tại trung tâm Thủ đô giúp ohujcc vụ ọi mục đích nhu cầu
-      của bạn tiện lợi hơn bao giờ hết!</p>
+   
     <p class="text-right"><a class="btn btn-primary btn-large style="width:25%; display: inline-block;"">Đọc thêm..</a></p>
   </div>
-</div> <!-- /container -->
+</div> /container -->
 <?php
 include("layouts/trainghiem.php");
 include("layouts/footer.php"); ?>

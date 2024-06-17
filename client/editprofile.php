@@ -2,7 +2,7 @@
 include "./connect/connect.php";
 $err = [];
 
-// Kiểm tra xem người dùng đã đăng nhập chưa
+// kiểm tra xem người dùng đã đăng nhập chưa
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : array();
 
 if (isset($_POST['name'])) {
@@ -12,9 +12,9 @@ if (isset($_POST['name'])) {
     $newPassword = $_POST['new_password'];
     $confirmPassword = $_POST['confirm_password'];
 
-    // Kiểm tra mật khẩu hiện tại với mật khẩu trong cơ sở dữ liệu
+    // kiểm tra mật khẩu hiện tại với mật khẩu trong cơ sở dữ liệu
     if (password_verify($currentPassword, $user['password'])) {
-        // Mật khẩu hiện tại đúng, tiếp tục kiểm tra và cập nhật thông tin
+        // mật khẩu hiện tại đúng, tiếp tục kiểm tra và cập nhật thông tin
         if (empty($name)) {
             $err['name'] = 'Bạn chưa đặt tên tài khoản';
         }
@@ -22,39 +22,37 @@ if (isset($_POST['name'])) {
             $err['email'] = 'Bạn chưa nhập email';
         }
 
-        // Kiểm tra liệu người dùng có muốn thay đổi mật khẩu hay không
+        // kiểm tra liệu người dùng có muốn thay đổi mật khẩu hay không
         if (!empty($newPassword)) {
             if ($newPassword != $confirmPassword) {
                 $err['confirm_password'] = 'Mật khẩu xác nhận không trùng khớp';
             }
         }
 
-        // Nếu không có lỗi, tiến hành cập nhật thông tin và mật khẩu
+        // không có lỗi tiến hành cập nhật thông tin và mật khẩu
         if (empty($err)) {
             $name = mysqli_real_escape_string($conn, $name);
             $email = mysqli_real_escape_string($conn, $email);
 
-            // Cập nhật thông tin người dùng
+            // cập nhật thông tin người dùng
             $updateUserSQL = "UPDATE users SET name = '$name', email = '$email' WHERE id = " . $user['id'];
             $updateUserQuery = mysqli_query($conn, $updateUserSQL);
 
             if ($updateUserQuery) {
-                // Nếu người dùng muốn thay đổi mật khẩu, thì cập nhật mật khẩu
+                // nếu người dùng muốn thay đổi mật khẩu, thì cập nhật mật khẩu
                 if (!empty($newPassword)) {
                     $hashedNewPassword = password_hash($newPassword, PASSWORD_DEFAULT);
                     $updatePasswordSQL = "UPDATE users SET password = '$hashedNewPassword' WHERE id = " . $user['id'];
                     $updatePasswordQuery = mysqli_query($conn, $updatePasswordSQL);
                 }
 
-                // Lấy lại thông tin người dùng sau khi cập nhật
+                // lấy lại thông tin người dùng sau khi cập nhật
                 $getUserSQL = "SELECT * FROM users WHERE id = " . $user['id'];
                 $getUserQuery = mysqli_query($conn, $getUserSQL);
                 $updatedUserData = mysqli_fetch_assoc($getUserQuery);
 
                 // Cập nhật phiên
                 $_SESSION['user'] = $updatedUserData;
-
-                // Chuyển hướng về trang chủ hoặc trang thông tin cá nhân
                 header('location: home.php');
                 exit();
             } else {

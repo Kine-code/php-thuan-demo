@@ -1,6 +1,7 @@
 <?php
 include "./connect/connect.php";
 $err = [];
+
 if (isset($_POST['name'])) {
 	$name = $_POST['name'];
 	$email = $_POST['email'];
@@ -27,7 +28,8 @@ if (isset($_POST['name'])) {
 
 	if (empty($err)) {
 		$pass = password_hash($password, PASSWORD_DEFAULT);
-		$sql = "INSERT INTO users(name, email, password,choose) VALUES ('$name','$email','$pass','$choose')";
+		$role = 'user'; // Giá trị mặc định
+		$sql = "INSERT INTO users(name, email, password, role) VALUES ('$name','$email','$pass','$role')";
 		$query = mysqli_query($conn, $sql);
 		// Kiểm tra xem người dùng đã xác thực chưa, chuyển hướng đến trang đăng nhập nếu chưa
 		if ($query) {
@@ -38,7 +40,7 @@ if (isset($_POST['name'])) {
 				'email' => $email,
 				// Các trường thông tin khác có thể được thêm vào tùy theo cần thiết
 			);
-			header('location: home.php');
+			header('location: signin.php');
 			exit(); // Đảm bảo thoát sau khi chuyển hướng
 		}
 	}
@@ -67,7 +69,7 @@ if (isset($_POST['name'])) {
 						<p class="text-center text-muted">Nếu bạn đã có tài khoản, <a href="signup.php">ĐĂNG NHẬP</a> để truy cập những tiện ích sẵn có của chúng tôi. </p>
 						<hr>
 
-						<form action="" method="Post" role="form" id="signinForm">
+						<form action="" method="Post" role="form" id="signupForm">
 							<div class="top-margin">
 								<label>Tên tài khoản</label>
 								<div class="has-error"><span><?php echo (isset($err['name'])) ? $err['name'] : '' ?></span></div>
@@ -129,7 +131,6 @@ $(document).ready(function() {
             data: $(this).serialize(),
             success: function(response) {
                 console.log(response); // Ghi lại phản hồi từ máy chủ
-               
             }
         });
     });

@@ -1,8 +1,11 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include "./connect/connect.php";
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : array();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -85,15 +88,21 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : array();
 					</li> -->
 					<li><a href="contact.php">Liên hệ</a></li>
 
-					<li><a href="shopping_cart.php"><i class="fa fa-shopping-cart"></i> </a></li>
-					<!-- <span><= isset($total_cart_items) ? $total_cart_items : 1; ?></span> -->
+					<li>
+						<a href="shopping_cart.php" class="fa fa-shopping-cart">
+							<span><?= isset($total_cart_items) ? $total_cart_items : 0; ?></span>
+						</a>
+					</li>
+
 
 					<?php if (isset($user['name'])) { ?>
 						<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user['name']; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="editprofile.php"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa thông tin</a></li>
 								<li><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</a></li>
+								<li><a href="orders.php">Đã đặt kho</a></li>
 								<li><a href="add_product.php">demo</a></li>
+
 							</ul>
 						</li>
 					<?php } else { ?>
